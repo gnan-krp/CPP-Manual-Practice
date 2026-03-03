@@ -1,72 +1,117 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class Sport
+class Drummer
 {
     protected:
-        string sportName;
+        string name;
+        int experience;
 
     public:
-        void setSport(string name)
+        void getdata()
         {
-            sportName = name;
+            cout << "Enter The Name Of The Drummer : " << endl;
+            cin >> name;
+            cout << "Enter Experienced Years : " << endl;
+            cin >> experience;
         }
-
-        void displaySport()
+        void showdata()
         {
-            cout << "Sport Name: " << sportName << endl;
+            cout << "Name Of The Drummer Is = " << name << endl;
+            cout << "Years Of Experience : " << experience << endl;
         }
 };
 
-class OutdoorSport : public Sport
+class Guitarist
 {
     protected:
-        string location;
+        string name;
+        int experience;
 
     public:
-        void setLocation(string loc)
+        void getdata()
         {
-            location = loc;
+            cout << "Enter The Name Of The Guitarist : " << endl;
+            cin >> name;
+            cout << "Enter Experienced Years : " << endl;
+            cin >> experience;
         }
-
-        void displayLocation()
+        void showdata()
         {
-            cout << "Location: " << location << endl;
+            cout << "Name Of The Guitarist Is = " << name << endl;
+            cout << "Years Of Experience : " << experience << endl;
         }
 };
 
-class Tennis : public OutdoorSport
+class Singer
 {
     protected:
-        string playerName;
-        int ranking;
+        string name;
+        int experience;
 
     public:
-        void setPlayer(string name, int rank)
-        {   
-            playerName = name;
-            ranking = rank;
+        void getdata()
+        {
+            cout << "Enter The Name Of The Singer : " << endl;
+            cin >> name;
+            cout << "Enter Experienced Years : " << endl;
+            cin >> experience;
         }
+        void showdata()
+        {
+            cout << "Name Of The Singer Is = " << name << endl;
+            cout << "Years Of Experience : " << experience << endl;
+        }
+};
 
-    void displayTennisDetails()
-    {
-        displaySport();
-        displayLocation();
-        cout << "Player Name: " << playerName << endl;
-        cout << "World Ranking: " << ranking << endl;
-    }
+class pianoPlayer
+{
+    protected:
+        string name;
+        int experience;
+
+    public:
+        void getdata()
+        {
+            cout << "Enter The Name Of The pianoPlayer : " << endl;
+            cin >> name;
+            cout << "Enter Experienced Years : " << endl;
+            cin >> experience;
+        }
+        void showdata()
+        {
+            cout << "Name Of The pianoPlayer Is = " << name << endl;
+            cout << "Years Of Experience : " << experience << endl;
+        }
+};
+
+class Orchestra : public Drummer, public Guitarist, public Singer, public pianoPlayer
+{
+    public:
+        void getdata()
+        {
+            cout << "Enter The Details Of The Orchestra : " << endl;
+            Drummer::getdata();
+            Guitarist::getdata();
+            Singer::getdata();
+            pianoPlayer::getdata();
+        }
+        void showdata()
+        {
+            cout << "Details Of The Orchestra Is : " << endl;
+            Drummer::showdata();
+            Guitarist::showdata();
+            Singer::showdata();
+            pianoPlayer::showdata();
+        }
 };
 
 int main()
 {
-    Tennis t;
+    Orchestra o;
 
-    t.setSport("Tennis");
-    t.setLocation("Wimbledon");
-    t.setPlayer("Novak Djokovic", 3);
-
-    cout << "----- Tennis Details -----" << endl;
-    t.displayTennisDetails();
+    o.getdata();
+    o.showdata();
 
     return 0;
 }
